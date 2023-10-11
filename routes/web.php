@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\AdminPanel\InvoiceController as AdminInvoiceController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::loginUsingId(9);
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('invoice', [InvoiceController::class, 'index']);
+Route::get('invoice/user/{user}', [AdminInvoiceController::class, 'index']);

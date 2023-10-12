@@ -19,6 +19,7 @@ class InvoiceController extends Controller
                 'id' => $invoice->id,
                 'code' => $invoice->code,
                 'note' => $invoice->note,
+                'amount' => number_format($invoice->amount, 0, '.', '.'),
                 'created_at' => $invoice->created_at->format('d M Y H:i'),
             ]);
     }

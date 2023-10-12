@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\InvoiceRepository;
 use App\Repositories\Intervace\InvoiceRepositoryIntervace;
-
+use Illuminate\Support\Facades\App;
 
 class InvoiceController extends Controller
 {
@@ -16,9 +16,10 @@ class InvoiceController extends Controller
     // public function __construct(protected InvoiceRepository $invoiceRepository)
     // {
     // }
-    public function index(User $user, InvoiceRepositoryIntervace $invoiceRepository)
+    public function index(User $user)
     {
-        return $invoiceRepository->byUser($user);
+        return app(InvoiceRepositoryIntervace::class)->byUser($user);
+        // return $invoiceRepository->byUser($user);
         // return Invoice::query()
         //     ->select('id', 'code', 'amount', 'note', 'created_at')
         //     ->latest()
